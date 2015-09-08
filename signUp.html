@@ -16,37 +16,48 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="well bs-component">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" name="signUp" id="signUp" novalidate>
                         <fieldset>
                             <legend>Sign Up</legend>
-                            <div class="form-group">
+                            <div class="form-group inputEmail">
                                 <label for="inputUsername" class="col-lg-2 control-label" >Username</label>
                                 <div class="col-lg-10">
-                                    <input type='email' class="form-control" id="inputEmail" placeholder="Your Email" />
+                                    <input type='email' class="form-control" id="inputEmail" placeholder="Your Email" maxlength="56" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group inputPassword">
                                 <label for="inputPassword" class="col-lg-2 control-label" >Password</label>
                                 <div class="col-lg-10">
-                                    <input type='password' class="form-control" id="inputPassword" placeholder="Your Password" />
+                                    <input type='password' class="form-control" id="inputPassword" placeholder="Your Password" minlength="6" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group inputConfirmPassword">
                                 <label for="inputConfirmPassword" class="col-lg-2 control-label">Confirm Password</label>
                                 <div class="col-lg-10">
-                                    <input type='password' class="form-control" id="inputConfirmPassword" placeholder="Confirm your password" />
+                                    <input type='password' class="form-control" id="inputConfirmPassword" placeholder="Confirm your password" minlength="6"  />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group inputFirstName">
                                 <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
                                 <div class="col-lg-10">
-                                    <input type='text' class="form-control" id="inputFirstName" placeholder="First Name" />
+                                    <input type='text' class="form-control" id="inputFirstName" placeholder="First Name" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="form-group inputLastName">
+                                <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+                                <div class="col-lg-10">
+                                    <input type='text' class="form-control" id="inputLastName" placeholder="Last Name" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="form-group inputDOB">
+                                <label for="date" class="col-lg-2 control-label">Birthday</label>
+                                <div class="col-lg-10">
+                                    <input type='date' class="form-control" id="inputDOB" placeholder="mm/dd/yyyy"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
-                                <div class="col-lg-10">
-                                    <input type='text' class="form-control" id="inputLastName" placeholder="Last Name" />
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -58,7 +69,7 @@
 
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript" src="signUp.js"></script>
         <script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
         <script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
         <script>
