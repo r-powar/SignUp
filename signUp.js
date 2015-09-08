@@ -1,10 +1,33 @@
 $(document).ready(function(){
-	//$('.inputEmail').change(signUp.usernameValid);
-	$('input').on('blur', function(){
+	
+	/*TODO 
+		Modernizer for date type
+		Validation on form submission 
+	*/
+
+	$('#inputEmail').on('blur', function(){
 		signUp.usernameValid();
+	});
+
+	$('#inputPassword').on('blur', function(){
 		signUp.passwordValidity();
 	});
 
+	$('#inputConfirmPassword').on('blur', function(){
+		signUp.cnfrmPassword();
+	});
+
+	$('#inputFirstName').on('blur', function(){
+		signUp.nameValidity();
+	});
+
+	$('#inputLastName').on('blur', function(){
+		signUp.lastNameField();
+	});
+
+	$('#inputDOB').on('blur', function(){
+		signUp.checkDOB();
+	});
 
 	$("form").submit(function(event){
 		signUp.init();
@@ -58,10 +81,10 @@ var signUp = {
 			passwordVal = $('#inputPassword').val();
 
 		if(confirmPassVal == "" || passwordVal != confirmPassVal){
-			$('.inputConfirmPassword').addClass("has-error");
+			$('.inputConfirmPassword').addClass("has-error").removeClass("has-success");
 			$('#inputConfirmPassword').attr("placeholder", "Password did not match");
 		}else{
-			$('.inputConfirmPassword').addClass("has-success");
+			$('.inputConfirmPassword').addClass("has-success").removeClass("has-error");
 		}
 
 	},
@@ -71,13 +94,13 @@ var signUp = {
 			pattern = new RegExp(/^[a-zA-Z]*$/),
 			regexVal = pattern.test(firstName);
 
-		if(firstName == ""){
-			$('.inputFirstName').addClass("has-error");
+		if(firstName == "" || !regexVal){
+			$('.inputFirstName').addClass("has-error").removeClass("has-success");
 		}else if(!regexVal){
-			$('.inputFirstName').addClass("has-error");
+			$('.inputFirstName').addClass("has-error").removeClass("has-success");
 			$('#inputFirstName').attr("placeholder", "Only letters for this field");
 		}else{
-			$('.inputFirstName').addClass("has-success");
+			$('.inputFirstName').addClass("has-success").removeClass("has-error");
 		}
 	},
 
@@ -101,9 +124,9 @@ var signUp = {
     	}
 
     	if(dateOfBirth == "" || (age < 14 || age > 150)){
-    		$('.inputDOB').addClass("has-error");
+    		$('.inputDOB').addClass("has-error").removeClass("has-success");
     	}else{
-    		$('.inputDOB').addClass("has-success");
+    		$('.inputDOB').addClass("has-success").removeClass("has-error");
     	}
 	},
 
