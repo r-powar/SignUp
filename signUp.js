@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	
 	/*TODO 
-		Modernizer for date type
 		Center main div
 	*/
 	var validity = false,
@@ -30,6 +29,7 @@ $(document).ready(function(){
 		validField = signUp.checkDOB(validity);
 	});
 
+	signUp.dateType();
 
 	$("form").submit(function(event){
 		var formChildrenAncestor = $(this).find('input').parent().parent().not('.inputLastName'),
@@ -148,6 +148,12 @@ var signUp = {
 	convertDate: function(dateOfBirth){
 		var date = new Date(dateOfBirth);
 		return date.toISOString();
+	},
+
+	dateType: function(){
+		if(!Modernizer.inputtypes.date){
+			$('#inputDOB').datepicker();
+		}
 	}
 
 }
