@@ -7,13 +7,28 @@
         <link href="bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">
         <link href="bower_components/bootstrap-material-design/dist/css/material.min.css" rel="stylesheet">
         <link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+        <style type="text/css">
+            html, body, .parent{
+                height: 100%;
+            }
+
+            body{
+                background-color: rgba(0,0,0,.8);
+            }
+
+            .parent{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
 
     </head>
 
     <body>
 
         <!-- Your site -->
-        <div class="row">
+        <div class="row parent">
             <div class="col-lg-6">
                 <div class="well bs-component">
                     <form class="form-horizontal" name="signUp" id="signUp" novalidate>
@@ -65,6 +80,7 @@
                 </div>
             </div>
         </div>
+      
         <!-- Your site ends -->
 
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

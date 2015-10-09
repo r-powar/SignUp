@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	
-	/*TODO 
-		Center main div
+	/*
+		The following blur events perform the real-time validations on the 
+		fields 
 	*/
 	var validity = false,
 		validField = false;
@@ -40,6 +41,10 @@ $(document).ready(function(){
 			}
 		});
 
+		/*
+			Based on the value of the validField varaiable we assign the class error to the fields 
+			on form submission
+		*/
 		if(!validField){
 			formChildrenAncestor.each(function(i){
 				formChildrenAncestor.eq(i).addClass('has-error')
@@ -53,6 +58,7 @@ $(document).ready(function(){
 
 var signUp = {
 
+	//This function performs the validation on the userName field and returns the validity of the field
 	usernameValid: function(validity){
 		var emailValue = $('#inputEmail').val(),
 			pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i),
@@ -67,6 +73,7 @@ var signUp = {
 		return validity;
 	},
 
+	//This function performs the validation for the password fiels and returns the validity of the field
 	passwordValidity: function(validity){
 		var passwordVal = $('#inputPassword').val();
 
@@ -83,6 +90,7 @@ var signUp = {
 		return validity;
 	},
 
+	//This function performs the validation of the confirm password field by comapring the value to the previous field and returns the validity 
 	cnfrmPassword: function(validity){
 		var confirmPassVal = $('#inputConfirmPassword').val(),
 			passwordVal = $('#inputPassword').val();
@@ -98,6 +106,7 @@ var signUp = {
 		return validity;
 	},
 
+	//This function performs the validation for the First Name and returns the validity
 	nameValidity: function(validity){
 		var firstName = $('#inputFirstName').val(),
 			pattern = new RegExp(/^[a-zA-Z]*$/),
@@ -116,6 +125,7 @@ var signUp = {
 		return validity;
 	},
 
+	//This function applies a new class value, based on an input value for Last Name
 	lastNameField: function(){
 		var lastName = $('#inputLastName').val();
 
@@ -124,6 +134,7 @@ var signUp = {
 		}
 	},
 
+	//This function performs validation for the date of birth based on the provided input
 	checkDOB: function(validity){
 		var dateOfBirth = $('#inputDOB').val(),
 			today = new Date(),
@@ -145,13 +156,15 @@ var signUp = {
     	return validity;
 	},
 
+	//This function is used to convert the date of birth ISO8601 format 
 	convertDate: function(dateOfBirth){
 		var date = new Date(dateOfBirth);
 		return date.toISOString();
 	},
 
+	//This function is to support browsers where input type=date is not supported
 	dateType: function(){
-		if(!Modernizer.inputtypes.date){
+		if(!Modernizr.inputtypes.date){
 			$('#inputDOB').datepicker();
 		}
 	}
